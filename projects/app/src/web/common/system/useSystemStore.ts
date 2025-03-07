@@ -106,14 +106,13 @@ export const useSystemStore = create<State>()(
 
         gitStar: 20000,
         async loadGitStar() {
-          if (!get().feConfigs?.show_git) return;
-          try {
-            const { data: git } = await axios.get('https://api.github.com/repos/labring/FastGPT');
-
-            set((state) => {
-              state.gitStar = git.stargazers_count;
-            });
-          } catch (error) {}
+          // if (!get().feConfigs?.show_git) return;
+          // try {
+          //   const { data: git } = await axios.get('https://api.github.com/repos/labring/FastGPT');
+          //   set((state) => {
+          //     state.gitStar = git.stargazers_count;
+          //   });
+          // } catch (error) {}
         },
 
         notSufficientModalType: undefined,

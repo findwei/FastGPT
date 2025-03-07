@@ -1,4 +1,4 @@
-### FastGPT V4.8.20 更新说明
+### aispeech GPT V4.8.20 更新说明
 
 1. 新增 - 使用记录导出和仪表盘。
 2. 新增 - DeepSeek resoner 模型支持输出思考过程。

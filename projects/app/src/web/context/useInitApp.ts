@@ -31,9 +31,9 @@ export const useInitApp = () => {
     // log fastgpt
     if (!isPlus) {
       console.log(
-        '%cWelcome to FastGPT',
-        'font-family:Arial; color:#3370ff ; font-size:18px; font-weight:bold;',
-        `GitHub：https://github.com/labring/FastGPT`
+        '%cWelcome to aispeech',
+        'font-family:Arial; color:#f40 ; font-size:18px; font-weight:bold;',
+        `官网：https://www.aispeech.com/`
       );
     }
 

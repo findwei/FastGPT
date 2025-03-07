@@ -41,7 +41,7 @@ export async function connectMongo(): Promise<Mongoose> {
         }
       } catch (error) {}
     });
-
+    console.log(process.env.MONGODB_URI, '===================');
     await connectionMongo.connect(process.env.MONGODB_URI as string, {
       bufferCommands: true,
       maxConnecting: maxConnecting,

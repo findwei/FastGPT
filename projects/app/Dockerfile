@@ -1,5 +1,6 @@
 # --------- install dependence -----------
 FROM node:20.14.0-alpine AS maindeps
+# FROM node:21.4.0 AS maindeps
 WORKDIR /app
 
 ARG proxy
@@ -16,13 +17,14 @@ RUN [ -f pnpm-lock.yaml ] || (echo "Lockfile not found." && exit 1)
 
 # if proxy exists, set proxy
 RUN if [ -z "$proxy" ]; then \
-        pnpm i; \
-    else \
-        pnpm i --registry=https://registry.npmmirror.com; \
-    fi
+  pnpm i; \
+  else \
+  pnpm i --registry=https://registry.npmmirror.com; \
+  fi
 
 # --------- builder -----------
 FROM node:20.14.0-alpine AS builder
+# FROM node:21.4.0 AS builder
 WORKDIR /app
 
 ARG proxy
@@ -38,6 +40,12 @@ COPY --from=maindeps /app/projects/app/node_modules ./projects/app/node_modules
 RUN [ -z "$proxy" ] || sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
 
 RUN apk add --no-cache libc6-compat && npm install -g pnpm@9.4.0
+# Update package index and install dependencies
+# RUN apk update && apk add --no-cache libc6-compat
+# # Install pnpm globally
+# RUN npm install -g pnpm@9.4.0 --unsafe-perm=true
+# # Add a system user
+# RUN adduser --system --uid 1001 nextjs
 
 ENV NODE_OPTIONS="--max-old-space-size=4096"
 ENV NEXT_PUBLIC_BASE_URL=$base_url
@@ -45,6 +53,7 @@ RUN pnpm --filter=app build
 
 # --------- runner -----------
 FROM node:20.14.0-alpine AS runner
+# FROM node:21.4.0 AS runner
 WORKDIR /app
 
 ARG proxy

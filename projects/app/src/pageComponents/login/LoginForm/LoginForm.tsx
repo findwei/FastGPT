@@ -108,7 +108,7 @@ const LoginForm = ({ setPageType, loginSuccess }: Props) => {
             })}
           ></Input>
         </FormControl>
-        {feConfigs?.docUrl && (
+        {/* {feConfigs?.docUrl && (
           <Flex
             alignItems={'center'}
             mt={7}
@@ -134,13 +134,14 @@ const LoginForm = ({ setPageType, loginSuccess }: Props) => {
               {t('login:privacy')}
             </Link>
           </Flex>
-        )}
+        )} */}
 
         <Button
           type="submit"
           my={5}
           w={'100%'}
           size={['md', 'md']}
+          mt={10}
           h={[10, 10]}
           fontWeight={['medium', 'medium']}
           colorScheme="blue"
@@ -150,7 +151,7 @@ const LoginForm = ({ setPageType, loginSuccess }: Props) => {
           {t('login:Login')}
         </Button>
 
-        <Flex
+        {/* <Flex
           align={'center'}
           justifyContent={'flex-end'}
           color={'primary.700'}
@@ -179,7 +180,7 @@ const LoginForm = ({ setPageType, loginSuccess }: Props) => {
               </Box>
             </Flex>
           )}
-        </Flex>
+        </Flex> */}
       </Box>
     </FormLayout>
   );

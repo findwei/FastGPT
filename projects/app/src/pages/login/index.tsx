@@ -8,6 +8,7 @@ import {
   DrawerContent,
   DrawerOverlay,
   Flex,
+  Image,
   useDisclosure
 } from '@chakra-ui/react';
 import { LoginPageTypeEnum } from '@/web/support/user/login/constants';
@@ -145,11 +146,13 @@ const Login = ({ ChineseRedirectUrl }: { ChineseRedirectUrl: string }) => {
 
       <Flex
         alignItems={'center'}
-        justifyContent={'center'}
-        bg={`url(${getWebReqUrl('/icon/login-bg.svg')}) no-repeat`}
+        justifyContent={'space-around'}
+        bg="#E9F1FF"
+        // bg={`url(${getWebReqUrl('/icon/login-bg.svg')}) no-repeat`}
         backgroundSize={'cover'}
         userSelect={'none'}
         h={'100%'}
+        px={['0', '5vw']}
       >
         {isPc && (
           <Box position={'absolute'} top={'24px'} right={'50px'}>
@@ -158,18 +161,26 @@ const Login = ({ ChineseRedirectUrl }: { ChineseRedirectUrl: string }) => {
         )}
         <Flex
           flexDirection={'column'}
-          w={['100%', '556px']}
-          h={['100%', '677px']}
+          // w={['100%', '556px']}
+          w={['100%', '456px', '556px']}
+          // h={['100%', '677px']}
+          h={['100%', '520px', '677px']}
           bg={'white'}
-          px={['5vw', '88px']}
+          // px={['5vw', '88px']}
+          px={['5vw', '68px', '88px']}
           py={['5vh', '64px']}
+          mx={['0', '5vw']}
           borderRadius={[0, '16px']}
           boxShadow={[
             '',
             '0px 32px 64px -12px rgba(19, 51, 107, 0.20), 0px 0px 1px 0px rgba(19, 51, 107, 0.20)'
           ]}
         >
-          <Box w={['100%', '380px']} flex={'1 0 0'}>
+          <Box
+            // w={['100%', '380px']}
+            w={['100%', '100%']}
+            flex={'1 0 0'}
+          >
             {pageType ? (
               DynamicComponent
             ) : (
@@ -178,7 +189,7 @@ const Login = ({ ChineseRedirectUrl }: { ChineseRedirectUrl: string }) => {
               </Center>
             )}
           </Box>
-          {feConfigs?.concatMd && (
+          {/* {feConfigs?.concatMd && (
             <Box
               mt={8}
               color={'primary.700'}
@@ -190,7 +201,16 @@ const Login = ({ ChineseRedirectUrl }: { ChineseRedirectUrl: string }) => {
             >
               {t('common:support.user.login.can_not_login')}
             </Box>
-          )}
+          )} */}
+        </Flex>
+
+        <Flex display={['none', 'flex']} justifyContent={'center'} alignItems={'center'} px={'2vw'}>
+          <Image
+            rounded="md"
+            w={'100%'}
+            src={getWebReqUrl('/icon/login-right.svg')}
+            alt="login-right"
+          />
         </Flex>
 
         {isOpen && <CommunityModal onClose={onClose} />}
